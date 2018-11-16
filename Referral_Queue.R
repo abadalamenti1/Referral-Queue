@@ -23,10 +23,15 @@ setwd("~/")
 
 ###Load in table
 d = read.table("~/MANIP TEXT.txt", sep = "\t", header = TRUE)
-d = dplyr::select(d, REFERRING.PROV.NAME, REFERRAL.PROV.NAME)
+###Remove NAs
+a = dplyr::filter(d, !is.na(REFERRING.PROV.NAME))
+b = dplyr::filter(a, !is.na(REFERRAL.PROV.NAME))
 
 ###Separate out providers
-P = dplyr::select(d, REFERRING.PROV.NAME)
+P = dplyr::select(b, REFERRING.PROV.NAME)
 ###Distinct providers
 p = dplyr::distinct(P)
 
+###Search by Provider
+c = dplyr::filter(b, REFERRING.PROV.NAME == "LASTNAME, FIRSTNAME")
+###Enter data into excel
