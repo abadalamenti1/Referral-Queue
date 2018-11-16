@@ -22,7 +22,7 @@ library(dpylr)
 setwd("~/")
 
 ###Load in table
-d = read.table("~/Text of Manipulated File.txt", sep = "\t", header = TRUE)
+d = read.table("~/MANIP TEXT.txt", sep = "\t", header = TRUE)
 d = dplyr::select(d, REFERRING.PROV.NAME, REFERRAL.PROV.NAME)
 
 ###Separate out providers
